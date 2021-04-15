@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "13068513913",
+    "project_id": "netflics-9dac8",
+    "storage_bucket": "netflics-9dac8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13068513913:android:5dd3059f7801423d8a1aa8",
+        "android_client_info": {
+          "package_name": "br.iesb.mobile.netflics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13068513913-0ga4kjqb4ikssdckc04fgal9hr0sgiu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGaD2kko6sTVGR9QiqMK4H9MKQn8FkcLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13068513913-0ga4kjqb4ikssdckc04fgal9hr0sgiu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
