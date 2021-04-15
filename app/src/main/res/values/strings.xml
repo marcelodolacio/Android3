@@ -21,8 +21,8 @@
     <string name="onboarding_faq">Perguntas Frequentes</string>
 
     <!-- Login -->
-    <string name="login_success">Login efetuado com sucesso!</string>
-    <string name="email_required">E-mail obrigatório!</string>
+    <string name="login_success">Usuário logado com sucesso!</string>
+    <string name="email_required">Usuário deve digitar um E-mail</string>
     <string name="invalid_email">E-mail inválido!</string>
     <string name="password_required">Password obrigatório!</string>
     <string name="password_minimum_length">A senha deve ter 6 caracteres no mínimo.</string>
