@@ -46,23 +46,19 @@ class LoginFragment : Fragment() {
         }
     }
 
-    @SuppressWarnings
-    fun login(v: View) {
-        viewmodel.login()
+    fun login() {
+       viewmodel.login()
     }
 
-    @SuppressWarnings
-    fun forgot(v: View) {
+    fun forgot() {
         findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
     }
 
-    @SuppressWarnings
-    fun signup(v: View) {
+    fun signup() {
         findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
     }
 
-    @SuppressWarnings
-    fun loginWithGoogle(v: View) {
+    fun loginWithGoogle() {
 
     }
 

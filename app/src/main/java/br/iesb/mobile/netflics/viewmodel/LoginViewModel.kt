@@ -34,17 +34,6 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun signup() {
-        viewModelScope.launch {
-            try {
-                result.value = interactor.signup(email.value, password.value)
-            } catch (t: Throwable) {
-                Log.d("NETFLICS", "[LOGIN] Error on signup: ${t.localizedMessage}")
-                result.value = t.localizedMessage
-            }
-        }
-    }
-
     fun forgot() {
         viewModelScope.launch {
             try {
@@ -55,5 +44,17 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
+
+    fun signup() {
+        viewModelScope.launch {
+            try {
+                result.value = interactor.signup(email.value, password.value)
+            } catch (t: Throwable) {
+                Log.d("NETFLICS", "[LOGIN] Error on forgot password: ${t.localizedMessage}")
+                result.value = t.localizedMessage
+            }
+        }
+    }
+
 
 }

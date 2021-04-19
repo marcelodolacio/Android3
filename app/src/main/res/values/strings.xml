@@ -21,10 +21,10 @@
     <string name="onboarding_faq">Perguntas Frequentes</string>
 
     <!-- Login -->
-    <string name="login_success">Usuário logado com sucesso!</string>
-    <string name="email_required">Usuário deve digitar um E-mail</string>
-    <string name="invalid_email">E-mail inválido, favor conferir endereço de E-mail digitado !</string>
-    <string name="password_required">Usuário deve digitar uma senha!</string>
+    <string name="login_success">Login efetuado com sucesso!</string>
+    <string name="email_required">E-mail obrigatório!</string>
+    <string name="invalid_email">E-mail inválido!</string>
+    <string name="password_required">Password obrigatório!</string>
     <string name="password_minimum_length">A senha deve ter 6 caracteres no mínimo.</string>
     <string name="password_invalid_check">A senha e a confirmação de senha devem ser iguais.</string>
     <string name="login_with_google">Entrar com Google</string>
@@ -34,11 +34,9 @@
 
     <!-- SignUp -->
     <string name="signup">Cadastrar</string>
-    <string name="signup_successfully">Cadastro efetuado com sucesso!</string>
 
     <!-- Forgot Password -->
     <string name="forgot_text">Informe o seu e-mail de cadastro no campo abaixo e então pressione o botão enviar. Um e-mail será enviado para redefinir sua senha. Verifique sua caixa de Spam caso o e-mail não chegue na sua caixa de entrada.</string>
-    <string name="reset_password_email_sent">E-mail enviado com sucesso!</string>
 
 
 </resources>

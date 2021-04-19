@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentSignupBinding
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
@@ -30,19 +29,8 @@ class SignUpFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewmodel.result.observe(viewLifecycleOwner) {
-            when (it) {
-                "OK" -> {
-                    requireActivity().finish()
-                    Toast.makeText(context, getText(R.string.signup_successfully), Toast.LENGTH_LONG).show()
-                }
-                else -> Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-            }
-        }
-
+    fun signup() {
+        viewmodel.signup()
     }
 
 }
