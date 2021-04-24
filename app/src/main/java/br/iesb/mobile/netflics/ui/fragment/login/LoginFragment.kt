@@ -5,24 +5,45 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentLoginBinding
+import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    @Inject
+    lateinit var auth: FirebaseAuth
 
     private lateinit var binding: FragmentLoginBinding
     private val viewmodel: LoginViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (auth.currentUser != null) {
+            requireActivity().finish()
+            findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -37,29 +58,56 @@ class LoginFragment : Fragment() {
 
         viewmodel.result.observe(viewLifecycleOwner) {
             when (it) {
-                "OK" -> {
+                is AppResult.Success -> {
                     requireActivity().finish()
                     findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
                 }
-                else -> Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                is AppResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }
 
-    fun login() {
-       viewmodel.login()
+    @Suppress("UNUSED_PARAMETER")
+    fun login(v: View) {
+        viewmodel.login()
     }
 
-    fun forgot() {
+    @Suppress("UNUSED_PARAMETER")
+    fun forgot(v: View) {
         findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
     }
 
-    fun signup() {
+    @Suppress("UNUSED_PARAMETER")
+    fun signup(v: View) {
         findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
     }
 
-    fun loginWithGoogle() {
+    @Suppress("UNUSED_PARAMETER")
+    fun loginWithGoogle(v: View) {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
+        startForResult.launch(googleSignInClient.signInIntent)
+    }
+
+    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        val account = task.result
+        val credential = GoogleAuthProvider.getCredential(account?.idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener {
+                if (task.isSuccessful) {
+                    requireActivity().finish()
+                    findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+                } else {
+                    Toast.makeText(context, it.exception?.localizedMessage, Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
     }
 
 }
