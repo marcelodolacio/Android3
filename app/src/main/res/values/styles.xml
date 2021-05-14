@@ -34,6 +34,11 @@
         <item name="dotsSpacing">4dp</item>
     </style>
 
+    <style name="Widget.BottomNavigation" parent="android:Widget">
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+    </style>
+
     <style name="Widget.AnimatedProfile" parent="android:Widget">
         <item name="profileBorderColor">?attr/colorPrimary</item>
         <item name="profileBorderWidth">8</item>
@@ -47,6 +52,8 @@
         <item name="profileEndColor">?attr/colorPrimaryVariant</item>
         <item name="profilePlaceholder">@drawable/ic_account</item>
         <item name="profileNameTextSize">32</item>
+        <item name="profileEditIcon">@drawable/ic_edit</item>
+        <item name="profileEditIconTint">?attr/colorSecondary</item>
     </style>
 
     <style name="Widget.EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">

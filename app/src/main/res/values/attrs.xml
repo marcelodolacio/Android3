@@ -11,6 +11,7 @@
     <attr format="reference" name="editTextLayoutStyle"/>
     <attr format="reference" name="layoutEditTextStyle"/>
     <attr format="reference" name="profileStyle"/>
+    <attr format="reference" name="bottomNavigationStyle"/>
 
     <declare-styleable name="AnimatedProfile">
         <attr name="profileName" format="string" />
@@ -20,6 +21,10 @@
         <attr name="profileNameStrokeColor" format="color" />
         <attr name="profileImage" format="reference" />
         <attr name="profilePlaceholder" format="reference" />
+        <attr name="profileEditIcon" format="reference" />
+        <attr name="profileEditIconTint" format="color" />
+        <attr name="profileShowEditIcon" format="boolean" />
+        <attr name="profileOnEditClick" format="string" />
         <attr name="profileCounter" format="integer" />
         <attr name="profileAnimatedCounter" format="boolean" />
         <attr name="profileCounterColor" format="color" />
