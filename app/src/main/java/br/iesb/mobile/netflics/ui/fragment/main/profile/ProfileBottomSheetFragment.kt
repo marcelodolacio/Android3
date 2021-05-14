@@ -48,7 +48,8 @@ class ProfileBottomSheetFragment(
 
     @Suppress("UNUSED_PARAMETER")
     fun save(v: View) {
-        viewmodel.createOrUpdateProfile()
+          viewmodel.createOrUpdateProfile()
+          viewmodel.loadProfiles()
     }
 
     @Suppress("UNUSED_PARAMETER")
